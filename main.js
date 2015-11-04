@@ -1,6 +1,5 @@
-'use strict';
-
 (function($){
+'use strict';
 
   var apiURL = 'http://api.wunderground.com/api/c0b168fbe50bdfd7/';
 
@@ -11,6 +10,8 @@
   function init(){
 
     let userLocationURL = apiURL + 'geolookup/q/autoip.json';
+
+    $('#changeLocationButton').click(changeLocation);
 
     $.get(userLocationURL)
     .done(function(data){
@@ -124,6 +125,7 @@
 
               pageData.push(almanacData);
 
+              updateLocalStorage();
               populateValuesOnPage();
 
 
@@ -152,6 +154,10 @@
       this.lowF = data.forecast.simpleforecast.forecastday[i].low.fahrenheit;
       this.lowC = data.forecast.simpleforecast.forecastday[i].low.celsius;
       this.forecastText = data.forecast.txt_forecast.forecastday[i*2].fcttext;
+    }
+
+    function updateLocalStorage() {
+      localStorage.pageData = JSON.stringify(pageData);
     }
 
     function populateValuesOnPage() {
@@ -225,7 +231,18 @@
       }
     }
 
-    console.log('done');
+
+    function changeLocation() {
+      let newCity = $('#newCity').val();
+      let newState = $('#newState').val();
+
+      pageData[0].userCity = newCity;
+      pageData[0].userState = newState;
+
+      updateLocalStorage();
+      populateValuesOnPage();
+    }
+
 
   }
 
