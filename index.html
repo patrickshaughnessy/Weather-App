@@ -10,18 +10,18 @@
 </head>
 <body>
 
-  <div class="container-fluid">
+  <div class="container-fluid" id="bigContainer">
     <div class="row">
       <div class="col-sm-12 col-md-6">
         <!-- main weather area -->
 
-        <div class="row">
-          <div class="col-sm-6 col-md-12">
+        <div class="row" id="firstSection">
+          <div class="col-sm-6 col-md-12" id="header">
             <h2>Today's Weather For:</h2>
             <h1 id="userLocation"></h1>
 
             <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+    <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">
       Change Location
     </button>
 
@@ -56,9 +56,9 @@
     </div>
 
 
-        <div class="row">
+        <div class="row" id='mainDisplay'>
           <div class="col-sm-12 col-md-4" id="weatherIcons">
-            <img src="#" alt="" id="currentWeatherIcon">
+            <img class="img-responsive" src="#" alt="" id="currentWeatherIcon">
           </div>
           <div class="col-sm-12 col-md-4" id="mainTemperatureDisplay">
             <h1 id="currentTemp"></h1>
@@ -148,10 +148,10 @@
                 <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                   <div class="panel-body">
                     <div class="row">
-                      <div class="col-sm-6 col-md-6">
+                      <div class="col-sm-5 col-md-5">
                         <h1 id="recordHigh"></h1>
                       </div>
-                      <div class="col-sm-6 col-md-6">
+                      <div class="col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2">
                         <h1 id="recordLow"></h1>
                       </div>
                     </div>
@@ -163,7 +163,7 @@
             <div class="col-md-12 col-sm-12">
               <div class="row">
                 <div class="col-md-4 col-sm-4">
-                  <form class="form">
+                  <form class="form"  id="compareArea">
                     <div class="form-group">
                       <label for="cityOne">Compare City</label>
                       <input type="text" class="form-control" id="cityOne" placeholder="City">

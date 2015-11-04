@@ -216,14 +216,14 @@
       $('#currentTemp').text(pageData[1].currentTempF.toString() + ' °F');
       $('#feelsLike').text('Feels Like: ' + pageData[1].feelsLikeF + ' °F');
 
-      $('#forecastDayOne h4:first').text('high: ' + pageData[2].firstDay.highF + ' °F');
-      $('#forecastDayOne h4:last').text('low: ' + pageData[2].firstDay.lowF + ' °F');
-      $('#forecastDayTwo h4:first').text('high: ' + pageData[2].secondDay.highF + ' °F');
-      $('#forecastDayTwo h4:last').text('low: ' + pageData[2].secondDay.lowF + ' °F');
-      $('#forecastDayThree h4:first').text('high: ' + pageData[2].thirdDay.highF + ' °F');
-      $('#forecastDayThree h4:last').text('low: ' + pageData[2].thirdDay.lowF + ' °F');
-      $('#forecastDayFour h4:first').text('high: ' + pageData[2].fourthDay.highF + ' °F');
-      $('#forecastDayFour h4:last').text('low: ' + pageData[2].fourthDay.lowF + ' °F');
+      $('#forecastDayOne h4:first').text('High: ' + pageData[2].firstDay.highF + ' °F');
+      $('#forecastDayOne h4:last').text('Low: ' + pageData[2].firstDay.lowF + ' °F');
+      $('#forecastDayTwo h4:first').text('High: ' + pageData[2].secondDay.highF + ' °F');
+      $('#forecastDayTwo h4:last').text('Low: ' + pageData[2].secondDay.lowF + ' °F');
+      $('#forecastDayThree h4:first').text('High: ' + pageData[2].thirdDay.highF + ' °F');
+      $('#forecastDayThree h4:last').text('Low: ' + pageData[2].thirdDay.lowF + ' °F');
+      $('#forecastDayFour h4:first').text('High: ' + pageData[2].fourthDay.highF + ' °F');
+      $('#forecastDayFour h4:last').text('Low: ' + pageData[2].fourthDay.lowF + ' °F');
 
       $('#lastYearInfo').text('Last year on ' + pageData[3].lastYearDatePretty + ', it was ' + pageData[3].lastYearTempF + ' °F');
 
@@ -235,14 +235,14 @@
       $('#currentTemp').text(pageData[1].currentTempC.toString() + ' °C');
       $('#feelsLike').text('Feels Like: ' + pageData[1].feelsLikeC + ' °C');
 
-      $('#forecastDayOne h4:first').text('high: ' +pageData[2].firstDay.highC + ' °C');
-      $('#forecastDayOne h4:last').text('low: ' + pageData[2].firstDay.lowC + ' °C');
-      $('#forecastDayTwo h4:first').text('high: ' +pageData[2].secondDay.highC + ' °C');
-      $('#forecastDayTwo h4:last').text('low: ' + pageData[2].secondDay.lowC + ' °C');
-      $('#forecastDayThree h4:first').text('high: ' +pageData[2].thirdDay.highC + ' °C');
-      $('#forecastDayThree h4:last').text('low: ' + pageData[2].thirdDay.lowC + ' °C');
-      $('#forecastDayFour h4:first').text('high: ' +pageData[2].fourthDay.highC + ' °C');
-      $('#forecastDayFour h4:last').text('low: ' + pageData[2].fourthDay.lowC + ' °C');
+      $('#forecastDayOne h4:first').text('High: ' +pageData[2].firstDay.highC + ' °C');
+      $('#forecastDayOne h4:last').text('Low: ' + pageData[2].firstDay.lowC + ' °C');
+      $('#forecastDayTwo h4:first').text('High: ' +pageData[2].secondDay.highC + ' °C');
+      $('#forecastDayTwo h4:last').text('Low: ' + pageData[2].secondDay.lowC + ' °C');
+      $('#forecastDayThree h4:first').text('High: ' +pageData[2].thirdDay.highC + ' °C');
+      $('#forecastDayThree h4:last').text('Low: ' + pageData[2].thirdDay.lowC + ' °C');
+      $('#forecastDayFour h4:first').text('High: ' +pageData[2].fourthDay.highC + ' °C');
+      $('#forecastDayFour h4:last').text('Low: ' + pageData[2].fourthDay.lowC + ' °C');
 
       $('#lastYearInfo').text('On ' + pageData[3].lastYearDatePretty + ', it was ' + pageData[3].lastYearTempC + '°C');
 
