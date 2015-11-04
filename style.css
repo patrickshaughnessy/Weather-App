@@ -17,7 +17,7 @@
 }
 
 #mainDisplay h1{
-  font-size: 600%;
+  font-size: 400%;
 }
 
 #mainDisplay h3 {
@@ -25,8 +25,36 @@
   margin-bottom: 10%;
 }
 
-#compareArea {
+.forecastCSS div:first-child{
+  position: absolute;
+
+}
+.forecastCSS div:nth-child(2){
+  position: absolute;
+  margin-top: 20%;
+}
+.forecastCSS div:nth-child(3){
+  position: absolute;
+  margin-top: 72%;
+}
+
+.panel-default>.panel-heading {
   color: white;
+  background-color: #78a1fc;
+}
+
+.panel-body {
+  background-color: #3a45d7;
+  color: white;
+}
+
+
+.compareAreaCSS {
+  border: 9px solid #78a1fc;
+  color: white;
+  border-radius: 30px;
+  background-color: #3a45d7;
+  padding: 3%;
 }
 
 #cityOneLocation {
