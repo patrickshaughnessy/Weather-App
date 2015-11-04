@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weather App</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <!-- main weather area -->
+
+        <div class="row">
+          <div class="col-sm-6 col-md-12">
+            <h2>Today's Weather For:</h2>
+            <h1 id="userLocation"></h1>
+            <button class="btn btn-default">Change Location</button>
+
+
+        <div class="row">
+          <div class="col-sm-12 col-md-4" id="weatherIcons">
+            <img src="#" alt="" id="currentWeatherIcon">
+          </div>
+          <div class="col-sm-12 col-md-4" id="mainTemperatureDisplay">
+            <h1 id="currentTemp"></h1>
+          </div>
+          <div class="col-sm-12 col-md-4" id="feelsLikeArea">
+            <div class="row">
+              <div class="col-sm-12 col-md-12">
+                <h3 id="feelsLike"></h3>
+              </div>
+              <div class="col-sm-12 col-md-12">
+                <button id="toggleFC">F/C</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        </div>
+          <div class="col-sm-6 col-md-12">
+            <!-- carousel -->
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                  <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      Forecast
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                  <div class="panel-body">
+                    <div class="row">
+                      <div class="col-sm-3 col-md-3" id="forecastDayOne">
+                        <h3>weekday</h3>
+                        <h1>conditions + img</h1>
+                        <p>text</p>
+                        <h4>high</h4>
+                        <h4>low</h4>
+                      </div>
+                      <div class="col-sm-3 col-md-3" id="forecastDayTwo">
+                        <h3>weekday</h3>
+                        <h1>conditions + img</h1>
+                        <p>text</p>
+                        <h4>high</h4>
+                        <h4>low</h4>
+                      </div>
+                      <div class="col-sm-3 col-md-3" id="forecastDayThree">
+                        <h3>weekday</h3>
+                        <h1>conditions + img</h1>
+                        <p>text</p>
+                        <h4>high</h4>
+                        <h4>low</h4>
+                      </div>
+                      <div class="col-sm-3 col-md-3"id="forecastDayFour">
+                        <h3>weekday</h3>
+                        <h1>conditions + img</h1>
+                        <p>text</p>
+                        <h4>high</h4>
+                        <h4>low</h4>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      Last Year's Temperature
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                  <div class="panel-body">
+                    <h1 id="lastYearInfo"></h1>
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingThree">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      Historical Highs and Lows
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                  <div class="panel-body">
+                    <div class="row">
+                      <div class="col-sm-6 col-md-6">
+                        <h1 id="recordHigh"></h1>
+                      </div>
+                      <div class="col-sm-6 col-md-6">
+                        <h1 id="recordLow"></h1>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12 col-sm-12">
+              <div class="row">
+                <div class="col-md-4 col-sm-4">
+                  <input type="text">
+                  <button class="btn btn-default">Compare City</button>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                  <input type="text">
+                  <button class="btn btn-default">Compare City</button>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                  <input type="text">
+                  <button class="btn btn-default">Compare City</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-6">
+        <!-- compare weather area -->
+
+        <div class="row">
+
+          <div class="col-sm-4 col-md-12">
+            <!-- comparison 1 -->
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <h1>72 F</h1>
+                <h3>in San Diego right now</h3>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <!-- webcam -->
+                <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                    <a href="#" class="thumbnail">
+                      <!-- <img src="..." alt="..."> -->
+                      <p>webcam or image</p>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-4 col-md-12">
+            <!-- comparison 2 -->
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <h1>72 F</h1>
+                <h3>in San Diego right now</h3>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <!-- webcam -->
+                <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                    <a href="#" class="thumbnail">
+                      <!-- <img src="..." alt="..."> -->
+                      <p>webcam or image</p>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-sm-4 col-md-12">
+            <!-- comparison 3 -->
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <h1>72 F</h1>
+                <h3>in San Diego right now</h3>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <!-- webcam -->
+                <div class="row">
+                  <div class="col-sm-12 col-md-12">
+                    <a href="#" class="thumbnail">
+                      <!-- <img src="..." alt="..."> -->
+                      <p>webcam or image</p>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+  <script src="main.js"></script>
+</body>
+</html>
