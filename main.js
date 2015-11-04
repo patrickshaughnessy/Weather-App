@@ -3,7 +3,8 @@
 
   var apiURL = 'http://api.wunderground.com/api/c0b168fbe50bdfd7/';
 
-  var pageData = localStorage.pageData ? JSON.parse(localStorage.pageData) : [];
+  // var pageData = localStorage.pageData ? JSON.parse(localStorage.pageData) : [];
+  var pageData = [];
 
   $(document).ready(init);
 
@@ -12,6 +13,10 @@
     let userLocationURL = apiURL + 'geolookup/q/autoip.json';
 
     $('#changeLocationButton').click(changeLocation);
+    $('#toggleFC').click(toggleFC);
+    $('#compareCityOne').click(compareCityOne);
+    // $('#compareCityTwo button').click(compareCityTwo);
+    // $('#compareCityThree button').click(compareCityThree);
 
     $.get(userLocationURL)
     .done(function(data){
@@ -125,7 +130,7 @@
 
               pageData.push(almanacData);
 
-              updateLocalStorage();
+              // updateLocalStorage();
               populateValuesOnPage();
 
 
@@ -227,20 +232,93 @@
 
         $('#recordHigh').text('The highest recorded temperature for today was ' + pageData[4].recordHighTempC + '°C in ' + pageData[4].recordHighYear);
         $('#recordLow').text('The lowest recorded temperature for today was ' + pageData[4].recordLowTempC  + '°C in ' + pageData[4].recordLowYear);
-
       }
+
+      if (pageData[5]){
+        $('#cityOneLocation').show();
+        $('#cityOneLocation h3').text('in ' + pageData[5].cityOne + ', ' + pageData[5].stateOne + ' right now');
+
+        if (pageData[0].userTempType === 'F'){
+          $('#cityOneLocation h1').text(pageData[6].currentTempFOne + '°F');
+          $('#cityOneLocation h4').text('Feels like ' + pageData[6].feelsLikeFOne + '°F');
+        } else {
+          $('#cityOneLocation h1').text(pageData[6].currentTempCOne + '°C');
+          $('#cityOneLocation h4').text('Feels like ' + pageData[6].feelsLikeCOne + '°C');
+        }
+      }
+
     }
 
 
     function changeLocation() {
+
       let newCity = $('#newCity').val();
       let newState = $('#newState').val();
 
       pageData[0].userCity = newCity;
       pageData[0].userState = newState;
 
-      updateLocalStorage();
+      // updateLocalStorage();
       populateValuesOnPage();
+    }
+
+    function toggleFC() {
+      let userTempType = pageData[0].userTempType;
+
+      if (userTempType === 'F') {
+        pageData[0].userTempType = 'C';
+        $('#toggleFC').removeClass('btn-info').addClass('btn-warning');
+      } else if (userTempType === 'C'){
+        pageData[0].userTempType = 'F';
+        $('#toggleFC').removeClass('btn-warning').addClass('btn-info');
+      }
+
+      // updateLocalStorage();
+      populateValuesOnPage();
+    }
+
+    function compareCityOne(event){
+      event.preventDefault();
+      event.stopPropagation();
+
+      let cityOne = $('#cityOne').val();
+      let cityOneFormatted = cityOne.split(' ').join('_');
+      let stateOne = $('#stateOne').val();
+      let compareLocationOne = stateOne + '/' + cityOneFormatted;
+
+      let cityOneData = {
+        cityOne: cityOne,
+        stateOne: stateOne,
+      }
+
+      pageData.push(cityOneData);
+
+      let compareLocationOneURL = apiURL + 'conditions/q/' + compareLocationOne + '.json';
+
+      $.get(compareLocationOneURL)
+      .done(function(data){
+        // debugger;
+        let currentTempFOne = data.current_observation.temp_f
+        let currentTempCOne = data.current_observation.temp_c
+        let feelsLikeFOne = data.current_observation.feelslike_f
+        let feelsLikeCOne = data.current_observation.feelslike_c
+        let weatherIconURLOne = data.current_observation.icon_url
+
+        let conditionsDataOne = {
+          currentTempFOne: currentTempFOne,
+          currentTempCOne: currentTempCOne,
+          feelsLikeFOne: feelsLikeFOne,
+          feelsLikeCOne: feelsLikeCOne,
+          weatherIconURLOne: weatherIconURLOne
+        }
+
+        pageData.push(conditionsDataOne);
+
+        populateValuesOnPage();
+
+      }).fail(function(error){
+        console.log('compareOne error', error);
+      });
     }
 
 
